@@ -10,14 +10,21 @@ class PokeContainer extends Component {
         fetch('http://localhost:3000/pokemons')
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
+            this.setState({
+                pokemons: data
+            })
         })
     }
 
     render() {
+
+        const pokemons = this.state.pokemons.map((p) => {
+            return <h1>{p.name}</h1>
+        })
+
         return (
             <div>
-                
+                {pokemons}
             </div>
         );
     }
